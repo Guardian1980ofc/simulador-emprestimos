@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Simulador de Empréstimos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'simulador/css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'lista_simulacoes'%}">Início</a>
+        <a href="{% url 'criar_simulacoes' %}">Nova Simulação</a>
+    </nav>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <script src="{% static 'simulador/js/script.js' %}"></script>
+    {% block script %}{% endblock %}
+</body>
+</html>
