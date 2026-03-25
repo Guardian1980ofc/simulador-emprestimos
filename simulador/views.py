@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import SimulacaoEmprestimo
 
 # Create your views here.
@@ -31,7 +31,8 @@ def lista_simulacoes(request):
 
 #UPDATE
 def editar_simulacao(request, pk):
-    simulacao = SimulacaoEmprestimo.objects.get(id=pk)
+    #o get_object_or_404 ira garantir que o id existe
+    simulacao = get_object_or_404(SimulacaoEmprestimo, id=pk)
     if request.method == 'POST':
         simulacao.valor = request.POST['valor']
         simulacao.juros = request.POST['juros']

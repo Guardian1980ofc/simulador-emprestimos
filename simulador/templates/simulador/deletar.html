@@ -1,0 +1,23 @@
+{% extends 'simulador/base.html' %}
+
+{% block titulo %}Deletar Simulação{% endblock %}
+
+{% block conteudo %}
+<h1>Confirmar Exclusão</h1>
+
+<p>Tem certeza que deseja deletar a simulação abaixo?</p>
+
+<ul>
+    <li>Valor: R$ {{ simulacao.valor }}</li>
+    <li>Juros: {{ simulacao.juros }}%</li>
+    <li>Prazo: {{ simulacao.prazo }} meses</li>
+    <li>Parcela: R$ {{ simulacao.parcela }}</li>
+    <li>Valor Final: R$ {{ simulacao.valor_final }}</li>
+</ul>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirmar</button>
+    <a href="{% url 'lista_simulacoes' %}">Cancelar</a>
+</form>
+{% endblock %}
