@@ -1,23 +1,26 @@
 {% extends 'simulador/base.html' %}
-
-{% block titulo %}Deletar Simulação{% endblock %}
+{% load static %}
 
 {% block conteudo %}
-<h1>Confirmar Exclusão</h1>
+<link rel="stylesheet" href="{% static 'simulador/css/deletar.css' %}">
 
-<p>Tem certeza que deseja deletar a simulação abaixo?</p>
+<div class="delete-container">
+    <h1>Confirmar Exclusão</h1>
+    <p>Tem certeza que deseja deletar a simulação abaixo?</p>
 
-<ul>
-    <li>Valor: R$ {{ simulacao.valor }}</li>
-    <li>Juros: {{ simulacao.juros }}%</li>
-    <li>Prazo: {{ simulacao.prazo }} meses</li>
-    <li>Parcela: R$ {{ simulacao.parcela }}</li>
-    <li>Valor Final: R$ {{ simulacao.valor_final }}</li>
-</ul>
+    <ul>
+        <li><strong>Valor:</strong> R$ {{ simulacao.valor }}</li>
+        <li><strong>Juros:</strong> {{ simulacao.juros }}%</li>
+        <li><strong>Prazo:</strong> {{ simulacao.prazo }} meses</li>
+        <li><strong>Parcela:</strong> R$ {{ simulacao.parcela }}</li>
+        <li><strong>Valor Final:</strong> R$ {{ simulacao.valor_final }}</li>
+    </ul>
 
-<form method="POST">
-    {% csrf_token %}
-    <button type="submit">Confirmar</button>
-    <a href="{% url 'lista_simulacoes' %}">Cancelar</a>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirmar Exclusão</button>
+        <a href="{% url 'lista_simulacoes' %}"
+            style="background: rgba(255,255,255,0.1); color: white; padding: 10px; border-radius: 10px; text-decoration: none;">Cancelar</a>
+    </form>
+</div>
 {% endblock %}

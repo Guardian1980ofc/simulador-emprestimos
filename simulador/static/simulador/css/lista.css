@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    background: linear-gradient(270deg, #0f172a, #48037d, #000000, #0f172a);
+    background-size: 600% 600%;
+    animation: gradientMove 10s ease infinite;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.list-container {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(55, 0, 118, 0.4);
+    overflow-x: auto;
+}
+
+.list-container h1 {
+    margin-bottom: 20px;
+    color: #c084fc;
+    text-align: center;
+}
+
+.list-container>a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4c00ff, #7c00b5);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.list-container>a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #7c00b5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead {
+    background: rgba(124, 0, 181, 0.7);
+}
+
+thead th {
+    padding: 12px;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tbody tr {
+    background: rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+tbody tr:hover {
+    background: rgba(124, 0, 181, 0.2);
+}
+
+th:last-child,
+td:last-child {
+    width: 140px;
+}
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acoes a {
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.acoes a:first-child {
+    background: #2563eb;
+}
+
+.acoes a:first-child:hover {
+    background: #1d4ed8;
+}
+
+.acoes a:last-child {
+    background: #7f1d1d;
+}
+
+.acoes a:last-child:hover {
+    background: #450a0a;
+}
+
+.list-container p {
+    text-align: center;
+    opacity: 0.7;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

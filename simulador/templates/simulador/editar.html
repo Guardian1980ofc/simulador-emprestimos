@@ -1,29 +1,35 @@
 {% extends 'simulador/base.html' %}
-
-{% block titulo %}Editar Simulação{% endblock %}
+{% load static %}
 
 {% block conteudo %}
-<h1>Editar Simulação</h1>
+<link rel="stylesheet" href="{% static 'simulador/css/editar.css' %}">
 
-<form method="POST">
-    {% csrf_token %}
-    <label>Valor do Empréstimo:</label>
-    <input type="number" name="valor" id="valor" value="{{ simulacao.valor }}" required>
+<div class="edit-container">
+    <h1>Editar Simulação</h1>
 
-    <label>Taxa de Juros (% ao mês):</label>
-    <input type="number" name="juros" id="juros" value="{{ simulacao.juros }}" step="0.01" required>
+    <form method="POST">
+        {% csrf_token %}
 
-    <label>Prazo (meses):</label>
-    <input type="number" name="prazo" id="prazo" value="{{ simulacao.prazo }}" required>
+        <label>Valor do Empréstimo:</label>
+        <input type="number" name="valor" id="valor" value="{{ simulacao.valor }}" required>
 
-    <h3>Resultado:</h3>
-    <p>Parcela mensal: R$ <span id="resultado_parcela">{{ simulacao.parcela }}</span></p>
-    <p>Valor total: R$ <span id="resultado_total">{{ simulacao.valor_final }}</span></p>
+        <label>Taxa de Juros (% ao mês):</label>
+        <input type="number" name="juros" id="juros" value="{{ simulacao.juros }}" step="0.01" required>
 
-    <input type="hidden" name="parcela" id="parcela" value="{{ simulacao.parcela }}">
-    <input type="hidden" name="valor_final" id="valor_final" value="{{ simulacao.valor_final }}">
+        <label>Prazo (meses):</label>
+        <input type="number" name="prazo" id="prazo" value="{{ simulacao.prazo }}" required>
 
-    <button type="submit">Salvar Alterações</button>
-    <a href="{% url 'lista_simulacoes' %}">Cancelar</a>
-</form>
+        <h3>Resultado:</h3>
+        <p>Parcela mensal: R$ <span id="resultado_parcela">{{ simulacao.parcela }}</span></p>
+        <p>Valor total: R$ <span id="resultado_total">{{ simulacao.valor_final }}</span></p>
+
+        <input type="hidden" name="parcela" id="parcela" value="{{ simulacao.parcela }}">
+        <input type="hidden" name="valor_final" id="valor_final" value="{{ simulacao.valor_final }}">
+
+        <button type="submit">Salvar Alterações</button>
+        <a href="{% url 'lista_simulacoes' %}">Cancelar</a>
+
+        <canvas id="meuGrafico" width="400" height="200"></canvas>
+    </form>
+</div>
 {% endblock %}

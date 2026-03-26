@@ -1,42 +1,47 @@
 {% extends 'simulador/base.html' %}
+{% load static %}
 
-{% block titulo %}Lista de Simulações{% endblock %}
+{% block titulo %}Simulações - MoneyLab{% endblock %}
 
 {% block conteudo %}
-<h1>Simulações de Empréstimo</h1>
-<a href="{% url 'criar_simulacoes' %}">Nova Simulação</a>
+<link rel="stylesheet" href="{% static 'simulador/css/lista.css' %}">
 
-{% if simulacoes %}
-<table>
-    <thead>
-        <tr>
-            <th>Valor</th>
-            <th>Juros</th>
-            <th>Prazo</th>
-            <th>Parcela</th>
-            <th>Valor Final</th>
-            <th>Data</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for simulacao in simulacoes %}
-        <tr>
-            <td>R$ {{ simulacao.valor }}</td>
-            <td>{{ simulacao.juros }}%</td>
-            <td>{{ simulacao.prazo }} meses</td>
-            <td>R$ {{ simulacao.parcela }}</td>
-            <td>R$ {{ simulacao.valor_final }}</td>
-            <td>{{ simulacao.data_simulacao }}</td>
-            <td>
-                <a href="{% url 'editar_simulacao' simulacao.id %}">Editar</a>
-                <a href="{% url 'deletar_simulacao' simulacao.id %}">Deletar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>Nenhuma simulação cadastrada ainda.</p>
-{% endif %}
+<div class="list-container">
+    <h1>Simulações de Empréstimo</h1>
+    <a href="{% url 'criar_simulacoes' %}">Nova Simulação</a>
+
+    {% if simulacoes %}
+    <table>
+        <thead>
+            <tr>
+                <th>Valor</th>
+                <th>Juros</th>
+                <th>Prazo</th>
+                <th>Parcela</th>
+                <th>Valor Final</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for simulacao in simulacoes %}
+            <tr>
+                <td>R$ {{ simulacao.valor }}</td>
+                <td>{{ simulacao.juros }}%</td>
+                <td>{{ simulacao.prazo }} meses</td>
+                <td>R$ {{ simulacao.parcela }}</td>
+                <td>R$ {{ simulacao.valor_final }}</td>
+                <td>{{ simulacao.data_simulacao|date:"d/m/Y" }}</td>
+                <td class="acoes">
+                    <a href="{% url 'editar_simulacao' simulacao.id %}">Editar</a>
+                    <a href="{% url 'deletar_simulacao' simulacao.id %}">Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhuma simulação cadastrada ainda.</p>
+    {% endif %}
+</div>
 {% endblock %}

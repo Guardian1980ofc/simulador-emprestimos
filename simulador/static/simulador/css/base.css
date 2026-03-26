@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    height: 100vh;
+    color: white;
+
+    background: linear-gradient(270deg, #0f172a, #48037d, #000000, #0f172a);
+    background-size: 600% 600%;
+
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 200;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: url("/img/image-removebg-preview.png") no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+}
+
+.logo-container {
+    padding: 10px 40px;
+}
+
+.logo-container h1 {
+    font-size: 78px;
+    color: #5a00ba;
+    margin-top: 20%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    text-align: justify;
+    margin-top: 0.5%;
+}
+
+nav a {
+    background: #1e293b;
+    padding: 20px 40px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+nav a:hover {
+    background: #5a00ba;
+    color: #ffffff;
+    font-weight: 700;
+}

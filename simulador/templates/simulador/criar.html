@@ -1,9 +1,14 @@
 {% extends 'simulador/base.html' %}
+{% load static %}
 
-{% block titulo %}Nova Simulação{% endblock %}
+{% block titulo %}Nova Simulação - MoneyLab{% endblock %}
 
 {% block conteudo %}
-<h1>Nova Simulação de Empréstimo</h1>
+<link rel="stylesheet" href="{% static 'simulador/css/criar.css' %}">
+
+<div class="nome">
+    <h1>Nova Simulação de Empréstimo</h1>
+</div>
 
 <form method="POST">
     {% csrf_token %}
@@ -24,5 +29,7 @@
     <input type="hidden" name="valor_final" id="valor_final">
 
     <button type="submit">Salvar Simulação</button>
+
+    <canvas id="meuGrafico" width="400" height="200"></canvas>
 </form>
 {% endblock %}
